@@ -1,9 +1,9 @@
 ---
-name: write-in-your-own-hand
+name: chisu
 description: Write a Chinese or Latin-script handwritten letter, note or signature in the agent's own visual style. Use for a first letter, repeat correspondence, handwriting practice, or feedback about a particular stroke, glyph, join or prior hand.
 ---
 
-# 自己的笔迹
+# 尺素
 
 收到「用你的字给我写封信」就写。第一次由写信者选笔、组织字形、决定落款；已经有字帖时，先读取当前写信者的私人字帖。尊重用户指定的原文、语言与字形习惯。默认给出一封可直接打开的图像信。
 
