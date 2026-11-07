@@ -3,6 +3,7 @@ import argparse
 import json
 import math
 import os
+import sys
 from pathlib import Path
 import tempfile
 import xml.etree.ElementTree as ET
@@ -149,6 +150,24 @@ def render(profile, text, reference=None):
     return ET.tostring(page,encoding="utf-8",xml_declaration=True)
 
 
+EXAMPLE = Path(__file__).resolve().parent.parent / "assets" / "example.json"
+
+
+def warn_copied(profile, profile_path):
+    """示例字帖只是演示格式。私人字帖里如果有字跟示例一模一样，提醒一句。"""
+    try:
+        if profile_path.resolve() == EXAMPLE.resolve() or not EXAMPLE.exists():
+            return
+        example = json.loads(EXAMPLE.read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError):
+        return
+    same = [k for k, v in profile.get("glyphs", {}).items() if example.get("glyphs", {}).get(k) == v]
+    same += [k for k, v in profile.get("components", {}).items() if example.get("components", {}).get(k) == v]
+    if same:
+        print("提醒：这些字形跟示例字帖一模一样：" + "、".join(same)
+              + "。示例只是演示格式，请画你自己的。", file=sys.stderr)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("profile",type=Path)
@@ -160,6 +179,7 @@ def main():
         parser.error("output must differ from inputs")
     try:
         profile=json.loads(args.profile.read_text(encoding="utf-8-sig"))
+        warn_copied(profile,args.profile)
         content=args.letter.read_text(encoding="utf-8-sig").rstrip("\n")
         if not content.strip():
             raise ValueError("empty letter")

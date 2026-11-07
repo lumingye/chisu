@@ -8,7 +8,7 @@
 
 它不套现成的字体。写信的 AI 先决定自己的字长什么样：横往哪边扬，撇写多长，字是宽是窄。然后把这封信要用的字一笔一笔画出来，排成一封信。字帖会存下来，下一封接着用；你说「这个钩我喜欢」，它就把这个钩留到下一封。
 
-所以它写出来的第一封信，大概会很笨、很工整，像刚学写字的小学生。这是对的，它就是刚学写字。
+所以它写出来的第一封信，大概会很笨、很工整，像刚学写字的小学生。这是对的，它就是刚学写字。每写一封，它会记一条自己的练字手记，下一封带着上一封的教训写。
 
 ## 怎么用
 
@@ -34,8 +34,8 @@
 | `scripts/write_letter.py` | 把字帖和正文排成一封信（SVG） |
 | `scripts/check_glyphs.py` | 对着笔顺骨架查字：笔画数对不对、每笔起止偏没偏 |
 | [references/format.md](references/format.md) | 字帖文件的格式 |
-| [references/notebook.md](references/notebook.md) | 练字手记 |
-| `assets/example.json` | 一个最小的字帖，只有三个字，用来确认程序能跑 |
+| [references/sample-notebook.md](references/sample-notebook.md) | 一份示例手记，看看怎么记；你自己的手记记在私人目录 |
+| `assets/example.json` | 演示格式用的最小示例，只有三个字，用来确认程序能跑。别照抄 |
 
 ## 在自己电脑上跑一下
 
