@@ -22,3 +22,14 @@ python scripts/write_letter.py assets/example.json assets/example.txt sample.svg
 ```json
 {"hi":{"advance":96,"strokes":[[[8,76,0.4],[14,48,0.9],[29,14,0.7],[31,16,1],[23,35,0.9],[12,72,1],[28,52,0.6],[42,45,0.8],[38,62,1],[36,72,0.9],[45,72,0.5],[61,51,0.6],[65,47,0.8],[58,68,1],[62,74,0.7],[78,65,0.25]],[[71,30,1.1]]]}}
 ```
+
+## 查字
+
+画完新字，先查结构再排信。用同一份字帖和同一份参考数据：
+
+```sh
+python scripts/check_glyphs.py 你的字帖.json --reference local-graphics.jsonl
+python scripts/check_glyphs.py 你的字帖.json --reference local-graphics.jsonl --chars 黑天
+```
+
+它会把字（包括 `parts` 拼出来的部件和每个 `variants`）缩放到同样大小，再跟参考比：笔画数对不对，每一笔的起点和终点差多远。笔画数不对多半是真错了；起止点差得多，可能是错，也可能只是你的写法，自己再看一眼。整词键（比如签名、连写的英文词）不查。
